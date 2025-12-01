@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CommunicationsService } from './communications.service';
 
@@ -8,8 +8,12 @@ export class CommunicationsController {
   constructor(private readonly communicationsService: CommunicationsService) {}
 
   @Post('send')
-  send(@Body() body: { channel: 'sms' | 'email' | 'whatsapp'; recipient: string; message: string }) {
-    return this.communicationsService.send(body.channel, { recipient: body.recipient, body: body.message });
+  send(@Body() body: { channel: 'sms' | 'email' | 'whatsapp'; recipient: string; message: string; employeeId?: string }) {
+    return this.communicationsService.send(body.channel, {
+      recipient: body.recipient,
+      body: body.message,
+      employeeId: body.employeeId,
+    });
   }
 
   @Post('bulk')
@@ -18,7 +22,7 @@ export class CommunicationsController {
   }
 
   @Get('log')
-  log() {
-    return this.communicationsService.log();
+  log(@Query('employeeId') employeeId?: string) {
+    return this.communicationsService.log(employeeId);
   }
 }

@@ -15,8 +15,22 @@ export class ChatController {
   @Post('send')
   send(
     @Body()
-    body: { sender: string; channel?: string; message: string; attachments?: string[]; emoji?: string },
+    body: {
+      sender: string;
+      channel?: string;
+      message: string;
+      attachments?: string[];
+      emoji?: string;
+      departments?: string[];
+    },
   ) {
-    return this.chatService.send({ sender: body.sender, channel: body.channel || 'general', body: body.message, attachments: body.attachments, emoji: body.emoji });
+    return this.chatService.send({
+      sender: body.sender,
+      channel: body.channel || 'general',
+      body: body.message,
+      attachments: body.attachments,
+      emoji: body.emoji,
+      departments: body.departments,
+    });
   }
 }

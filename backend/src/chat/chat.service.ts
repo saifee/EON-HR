@@ -8,6 +8,7 @@ interface Message {
   timestamp: string;
   attachments?: string[];
   emoji?: string;
+  departments?: string[];
 }
 
 @Injectable()
@@ -27,7 +28,12 @@ export class ChatService {
   }
 
   send(message: Omit<Message, 'id' | 'timestamp'>) {
-    const record: Message = { id: `m${this.messages.length + 1}`, timestamp: new Date().toISOString(), ...message };
+    const record: Message = {
+      id: `m${this.messages.length + 1}`,
+      timestamp: new Date().toISOString(),
+      attachments: message.attachments?.filter(Boolean),
+      ...message,
+    };
     this.messages.push(record);
     return record;
   }
