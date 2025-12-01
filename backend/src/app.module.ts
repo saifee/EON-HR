@@ -17,6 +17,7 @@ import { PerformanceModule } from './performance/performance.module';
 import { DocumentModule } from './documents/document.module';
 import { NotificationModule } from './notifications/notification.module';
 import { SettingsModule } from './settings/settings.module';
+import { EssModule } from './ess/ess.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -49,6 +50,7 @@ import configuration from './config/configuration';
     DocumentModule,
     NotificationModule,
     SettingsModule,
+    EssModule,
   ],
   controllers: [AppController],
   providers: [AppService],
