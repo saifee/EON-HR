@@ -29,6 +29,15 @@ export class Employee {
   @Column({ nullable: true })
   tenantId?: string;
 
+  @Column({ nullable: true })
+  address?: string;
+
+  @Column({ type: 'json', nullable: true })
+  contacts?: Array<{ type: string; value: string }>;
+
+  @Column({ type: 'json', nullable: true })
+  emergencyContacts?: Array<{ name: string; relation: string; phone: string }>;
+
   @CreateDateColumn()
   createdAt: Date;
 
