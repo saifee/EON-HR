@@ -19,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <nav className="space-y-2 text-sm text-slate-200">
                 <a className="block hover:text-white" href="/">Dashboard</a>
                 <a className="block hover:text-white" href="/directory">Employee Directory</a>
+                <a className="block hover:text-white" href="/ess">ESS Portal</a>
                 <a className="block hover:text-white" href="/payroll">Payroll</a>
                 <a className="block hover:text-white" href="/attendance">Attendance</a>
                 <a className="block hover:text-white" href="/leave">Leave</a>
